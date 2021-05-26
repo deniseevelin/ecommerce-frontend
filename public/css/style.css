@@ -1,0 +1,40 @@
+.login {
+    margin-top: 40px;
+    padding: 10px 30px 10px;
+    background: #e7e5e5;
+    box-shadow: -5px 6px 20px -8px rgb(0 0 0 /75%);
+    align-self: center;
+}
+
+.register {
+    margin-top: 40px;
+    padding: 10px 30px 10px;
+    background: #e7e5e5;
+    box-shadow: -5px 6px 20px -8px rgb(0 0 0 /75%);
+    align-self: center;
+}
+
+.or{
+    align-self: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.jumbotron img {
+    display:block;
+    margin-top: 20px;
+    width: 150%;
+}
+
+.jumbotron {
+width: 150px;
+margin: 0 auto;
+}
+
+.cart{
+    list-style: none;
+}
+
+.company{
+    margin-top: 20px;
+}

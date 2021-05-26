@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+      <div class="col-5 login">
+        <h3>
+          <p class="text-black-50 display-6">
+            <strong>Login</strong></p>
+        </h3>
+        <form action="/users/login" method="POST">
+          <div class=" col-8 mb-3 form-group">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">example@example.com</div>
+          </div>
+          <div class=" col-8 mb-3 form-group">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" name=password id="exampleInputPassword1">
+            <div id="passwordlHelp" class="form-text">
+              Sua senha deve conter no mínimo 8 caracteres incluindo letras e números</div>
+          </div>
+          <div class="form-group">
+          <button type="submit" class="btn btn-dark bg-dark">Entrar</button>
+        </div>
+        </form>
+      </div>
+      <div class="col-1 or">
+        <h5>
+          <strong>
+            <p class="text-black-50">OU</p>
+          </strong>
+        </h5>
+      </div>
+      <div class="col-6 register">
+        <h3>
+          <p class="text-black-50 display-6">
+            <strong>Cadastre-se!</strong></p>
+        </h3>
+        <form action="/users/register" method="POST">
+          <div class=" col-12 mb-3 form-group">
+            <label for="exampleInputName" class="form-label">Nome completo</label>
+            <input type="name" class="form-control" name="name" id="exampleInputName" aria-describedby="nameHelp">
+          </div>
+          <div class=" col-12 mb-3 form-group">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">example@example.com</div>
+          </div>
+          <div class=" col-12 mb-3 form-group">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+            <div id="passwordlHelp" class="form-text">
+              Sua senha deve conter no mínimo 8 caracteres incluindo letras e números</div>
+          </div>
+          <div class="form-group">
+          <button type="submit" class="btn btn-dark bg-dark">Cadastrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div> 

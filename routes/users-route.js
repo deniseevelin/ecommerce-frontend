@@ -5,8 +5,8 @@ module.exports = (app) => {
   app.get("/logout", controller.logout);
 
   app.post("/users/register", controller.registerUser);
-  app.get("/userregister", controller.UserFormRegister);
+  // app.get("/userregister", controller.UserFormRegister);
 
-  // app.post("/users/login", controller.loginUser);
+  app.post("/users/login", controller.userLogin);
   app.get("/userlogin", controller.UserFormLogin);
 };

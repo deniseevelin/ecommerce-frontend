@@ -6,4 +6,6 @@ module.exports = (app) => {
   app.get("/home/account", controller.homeAccount);
 
   app.get("/home/users", controller.homeUser);
+
+  app.get("/company", controller.company)
 };

@@ -1,0 +1,207 @@
+<div class="row g-5 container-fluid">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-secondary">Seu carrinho</span>
+            <span class="badge bg-secondary rounded-pill">1</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Anel de folha Prata 925</h6>
+                <small class="text-muted">Anel de prata de folha 925</small>
+              </div>
+              <span class="text-muted">R$ 139,90</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">CUPOM</h6>
+                <small>10OFF</small>
+              </div>
+              <span class="text-success">R$13,99</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong>R$125,91</strong>
+            </li>
+          </ul>
+  
+          <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Código Promocional">
+              <button type="submit" class="btn btn-secondary">Aplicar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3 text-secondary">Dados para pagamento</h4>
+          <form class="needs-validation" novalidate="">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">Primeiro nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  Primeiro nome é obrigatório.
+                </div>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Sobrenome</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  SObrenome é obrigatório.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="document" class="form-label">CPF<span></span></label>
+                <input type="document" class="form-control" id="document" placeholder="xxx.xxx.xxx.xx">
+                <div class="invalid-feedback">
+                    Insira um cpf válido.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span></span></span></label>
+                <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo.com">
+                <div class="invalid-feedback">
+                    Insira um e-mail válido.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="address" class="form-label">Endereço de entrega</label>
+                <input type="text" class="form-control" id="address" placeholder="Rua e número" required="">
+                <div class="invalid-feedback">
+                    Por favor inserir seu endereço de entrega.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="address2" class="form-label">Complemento <span class="text-muted">(Opcional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartamento / Condomínio / Bloco">
+              </div>
+  
+              <div class="col-md-5">
+                <label for="country" class="form-label">País</label>
+                <select class="form-select" id="country" required="">
+                  <option value="">Selecionar</option>
+                  <option>Brasil</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor, insira um país válido.
+                </div>
+              </div>
+  
+              <div class="col-md-4">
+                <label for="state" class="form-label">Estado</label>
+                <select class="form-select" id="state" required="">
+                  <option value="">Selecionar</option>
+                  <option>Acre</option>
+                  <option>Alagoas</option>
+                  <option>Amapá</option>
+                  <option>Amazonas</option>
+                  <option>Bahia</option>
+                  <option>Ceará</option>
+                  <option>Distrito Federal</option>
+                  <option>Espírito Santo</option>
+                  <option>Góias</option>
+                  <option>Maranhão</option>
+                  <option>Mato Grosso</option>
+                  <option>Mato Grosso do Sul</option>
+                  <option>Minas Gerais</option>
+                  <option>Pará</option>
+                  <option>Paraíba</option>
+                  <option>Paraná</option>
+                  <option>Pernambuco</option>
+                  <option>Piauí</option>
+                  <option>Rio de Janeiro</option>
+                  <option>Rio Grande do Norte</option>
+                  <option>Rio Grande do Sul</option>
+                  <option>Rondônia</option>
+                  <option>Roraima</option>
+                  <option>Santa Catarina</option>
+                  <option>São Paulo</option>
+                  <option>Sergipe</option>
+                  <option>Tocantins</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor insira um estado válido.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="zip" class="form-label">CEP</label>
+                <input type="text" class="form-control" id="zip" placeholder="XXXXX-XXX" required="">
+                <div class="invalid-feedback">
+                  CEP é obrigatório.
+                </div>
+              </div>
+            </div>
+  
+            <hr class="my-4">
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="same-address">
+              <label class="form-check-label" for="same-address">O endereço de entrega é o mesmo que o endereço de cobrança</label>
+            </div>
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="save-info">
+              <label class="form-check-label" for="save-info">Guarde esta informação para as próximas compras</label>
+            </div>
+  
+            <hr class="my-4">
+  
+            <h4 class="mb-3">Pagamento</h4>
+  
+            <div class="my-3">
+              <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                <label class="form-check-label" for="credit">Cartão de Crédito</label>
+              </div>
+              <div class="form-check">
+                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                <label class="form-check-label" for="debit">Boleto</label>
+              </div>
+  
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="form-label">Nome do cartão de crédito</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                <small class="text-muted">Nome conforme exibido no cartão</small>
+                <div class="invalid-feedback">
+                  Nome do cartão de crédito é obrigatório.
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="cc-number" class="form-label">Número do cartão de crédito</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                <div class="invalid-feedback">
+                    Número do cartão de crédito é obrigatório.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-expiration" class="form-label">Data de vencimento</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Data de vencimento do cartão é obrigatório.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                <div class="invalid-feedback">
+                  Código de segurança do cartão é obrigatório.
+                </div>
+              </div>
+            </div>
+  
+            <hr class="my-4">
+  
+            <button class="w-100 btn btn-success btn-lg" type="submit">Confirmar pagamento</button>
+          </form>
+        </div>
+ </div>

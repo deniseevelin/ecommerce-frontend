@@ -157,6 +157,10 @@ const financialControllers = {
       return res.status(400).send({ error: err.message });
     }
   },
+  Checkout: async (req, res, next) => {
+    res.render("payments.ejs");
+  },
+
   refundsPayment: async (req, res, next) => {
     try {
       const id = req.params.id;

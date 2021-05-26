@@ -34,6 +34,7 @@ module.exports = (app) => {
   app.post("/credit-cards/tokenization", controller.tokenCreditCard);
 
   app.post("/payments", controller.paymentCharge);
+  app.get("/checkout", controller.Checkout);
 
   app.post("/payments/:id/refunds", controller.refundsPayment);
 
