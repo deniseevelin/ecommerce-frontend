@@ -24,7 +24,7 @@ const usersController = {
       const login = await api(req, "post", "/users/auth", data);
       if (login.error) throw new Error(login.error);
       req.session.token = login.data.token;
-      res.status(201).send(login.data);
+      res.status(200).send(login.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
     }

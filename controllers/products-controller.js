@@ -10,10 +10,11 @@ const productsController = {
     }
   },
   renderProductsById: async (req, res, next) => {
-    const { id } = req.prams.id;
+    const { id } = req.params;
     try {
-      let products = await productRepository.getByIdProducts(id);
-      res.render("products.ejs", { products });
+      let product = await productRepository.getByIdProducts(req, id);
+      console.log(product)
+      res.render("product-details.ejs", { product });
     } catch (err) {
       return res.status(400).send({ error: "Error finding product!" });
     }

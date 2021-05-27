@@ -38,3 +38,7 @@ margin: 0 auto;
 .company{
     margin-top: 20px;
 }
+
+.resize {
+    width: 250px
+}

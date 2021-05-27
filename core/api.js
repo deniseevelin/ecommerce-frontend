@@ -2,16 +2,15 @@ const axios = require("axios");
 
 module.exports = async (req, method, endpoint, data = {}, config = {}) => {
   let headers = {};
-  // if (
-  //   typeof req.session != "undefined" &&
-  //   typeof req.session.token != "undefined" &&
-  //   req.session.token
-  // ) {
-  //   headers = {
-  //     Authorization: `Bearer ${req.session.token}`,
-  //   };
-  // }
-  // console.log(headers);
+  if (
+    typeof req.session != "undefined" &&
+    typeof req.session.token != "undefined" &&
+    req.session.token
+  ) {
+    headers = {
+      Authorization: `Bearer ${req.session.token}`,
+    };
+  }
   const instance = await axios.create({
     baseURL: "http://localhost:3030",
     headers,

@@ -5,8 +5,8 @@ const productRepository = {
     let products = await api(req, "get", "/products");
     return products.data;
   },
-  getByIdProducts: async (req, res) => {
-    let products = await api(req, "get", `/products/${req.params.id}`);
+  getByIdProducts: async (req, id) => {
+    let products = await api(req, "get", `/products/${id}`);
     return products.data;
   },
   registerProduct: async (req, res) => {
