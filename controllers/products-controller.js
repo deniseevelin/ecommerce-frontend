@@ -1,42 +1,58 @@
-const api = require("../core/api");
-
+const productRepository = require("../repositories/products-repository");
 
 const productsController = {
-    getAllProducts: async (req, res, next) => {
-      try {
-        const products = await api(req, "get", "/products");
-        return res.send(products.data);
-      } catch (err) {
-        return res.status(400).send({ error: "Error finding products!" });
-      }
-    },
-    getByIdProducts: async (req, res, next) => {
-      try {
-        const id = req.params.id;
-
-        const products = await api(req, "get", `/products/${id}`);
-        return res.send(products);
-      } catch (err) {
-        return res.status(400).send({ error: "Error finding products!" });
-      }
-    },
-    ProductId: async (req, res, next) => {
-      res.render("products.ejs");
-    },
-    registerProduct: async (req, res, next) => {
-      const data = req.body;
+  renderAllProducts: async (req, res, next) => {
     try {
-      const registerProducts = await api(req, "post", "/products/register", data);
-      if (registerProducts.error) throw new Error(registerProducts.error);
-      res.status(201).send(registerProducts);
+      let products = await productRepository.getAllProducts(req, res);
+      res.render("allproducts.ejs", { products });
     } catch (err) {
-      console.log(err);
+      return res.status(400).send({ error: "Error finding products!" });
+    }
+  },
+  renderProductsById: async (req, res, next) => {
+    const { id } = req.prams.id;
+    try {
+      let products = await productRepository.getByIdProducts(id);
+      res.render("products.ejs", { products });
+    } catch (err) {
+      return res.status(400).send({ error: "Error finding product!" });
+    }
+  },
+  renderRegisterProduct: async (req, res, next) => {
+    const data = req.body;
+    try {
+      let registerProducts = await productRepository.registerProduct(data);
+      if (registerProducts.error) throw new Error(registerProducts.error);
+      res.render("products.ejs", {
+        message: `Produto ${registerProducts.name} cadastrado com sucesso!`,
+      });
+    } catch (err) {
       return res.status(400).send({ error: err.message });
     }
   },
-    Cart: async (req, res, next) => {
-      res.render("cart.ejs");
+  renderUpdateProduct: async (req, res, next) => {
+    const data = req.body;
+    const { id } = req.params;
+    try {
+      let upProduct = await productRepository.updateProduct(id, data);
+      res.render("products.ejs", {
+        message: `Produto ${upProduct} atualizado com sucesso!`,
+      });
+    } catch (err) {
+      return res.status(400).send({ error: "Updating product failed" });
     }
-  };
-  
-  module.exports = productsController;
+  },
+  renderRemoveProduct: async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      let deleteProduct = await productRepository.deleteProduct(id);
+      res.render("products.ejs", {
+        message: `Produto ${deleteProduct} deletado com sucesso!`,
+      });
+    } catch (err) {
+      return res.status(400).send({ error: "Delete product failed" });
+    }
+  },
+};
+
+module.exports = productsController;

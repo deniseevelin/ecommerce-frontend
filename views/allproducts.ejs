@@ -1,0 +1,18 @@
+<% if(products.length > 0){%> <% for (let product of products){%>
+<div class="row gy-4 text-center container-fluid">
+  <div class="col-4 col-md-4">
+    <div class="p-4 border bg-light container-fluid">
+      <div class="card" style="width: 18rem">
+        <img src="<%=product.image%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%=product.name%></h5>
+          <span class="card-subtitle mb-2 text-muted"
+            >R$ <%=product.value%></span
+          >
+          <p class="card-text"><%=product.description%></p>
+        </div>
+      </div>
+    </div>
+    <%}%> <%}%>
+  </div>
+</div>
