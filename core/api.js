@@ -33,7 +33,6 @@ module.exports = async (method, endpoint, token = null, data = {}, config = {}) 
       request = instance.get;
   }
   return request(endpoint, data, config).catch((error) => {
-    console.log(error)
     return error.response;
   });
 };
