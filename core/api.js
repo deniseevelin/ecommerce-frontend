@@ -1,15 +1,11 @@
 const axios = require("axios");
 
-module.exports = async (req, method, endpoint, data = {}, config = {}) => {
+module.exports = async (method, endpoint, token = null, data = {}, config = {}) => {
   let headers = {};
-  if (
-    typeof req.session != "undefined" &&
-    typeof req.session.token != "undefined" &&
-    req.session.token
-  ) {
+  if (token) {
     headers = {
-      Authorization: `Bearer ${req.session.token}`,
-    };
+      Authorization: `Bearer ${token}`,
+    }
   }
   const instance = await axios.create({
     baseURL: "http://localhost:3030",
@@ -18,25 +14,26 @@ module.exports = async (req, method, endpoint, data = {}, config = {}) => {
 
   let request;
   switch (method) {
-    case "get":
+    case "GET":
       request = instance.get;
       break;
-    case "post":
+    case "POST":
       request = instance.post;
       break;
-    case "put":
+    case "PUT":
       request = instance.put;
       break;
-    case "patch":
+    case "PATCH":
       request = instance.patch;
       break;
-    case "delete":
+    case "DELETE":
       request = instance.delete;
       break;
     default:
       request = instance.get;
   }
   return request(endpoint, data, config).catch((error) => {
-    return error.response.data;
+    console.log(error)
+    return error.response;
   });
 };

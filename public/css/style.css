@@ -39,6 +39,33 @@ margin: 0 auto;
     margin-top: 20px;
 }
 
+.products{
+    margin-top: 20px;
+}
+
 .resize {
     width: 250px
+}
+
+.message-err {
+    display: none;
+}
+
+.back-load{
+    background: rgba(37, 37, 37, 0.3);
+}
+
+.back-load .spinner-grow{
+    width: 5rem;
+    height: 5rem;
+    margin-left: 50%;
+    left: -2;
+}
+
+.size {
+    width: 80px
+}
+
+.off {
+    display: none;
 }

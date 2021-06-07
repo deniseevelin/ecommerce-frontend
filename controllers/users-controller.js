@@ -1,41 +1,52 @@
-const api = require("../core/api");
+const repository = require("../repositories/user");
 
 const usersController = {
-  showUsers: async (req, res, next) => {
-    console.log(req.session);
-    const users = await api(req, "get", "/users");
+  list: async (req, res, next) => {
+    const users = await repository.list();
     return res.send(users.data);
   },
-  registerUser: async (req, res, next) => {
+  register: async (req, res, next) => {
     const data = req.body;
+
+    req.body = {
+      name: data["register-name"],
+      email: data["register-email"],
+      password: data["register-password"],
+    };
+
     try {
-      const register = await api(req, "post", "/users/register", data);
+      const register = await repository.register(req);
       if (register.error) throw new Error(register.error);
       req.session.token = register.data.token;
-      res.status(201).send(register.data);
+      req.session.user = register.data.user.name;
+      res.status(201).json(register.data);
     } catch (err) {
-      console.log(err);
       return res.status(400).send({ error: err.message });
     }
   },
-  userLogin: async (req, res, next) => {
+  login: async (req, res, next) => {
     const data = req.body;
+
+    req.body = {
+      email: data["login-email"],
+      password: data["login-password"],
+    };
     try {
-      const login = await api(req, "post", "/users/auth", data);
+      const login = await repository.login(req);
       if (login.error) throw new Error(login.error);
       req.session.token = login.data.token;
-      res.status(200).send(login.data);
+      req.session.user = login.data.user.name;
+      res.status(200).json(login.data);
     } catch (err) {
+      console.log(err)
       return res.status(400).send({ error: err.message });
     }
   },
-  logout: async (req, res, next) => {
-    if (
-      typeof req.session != "undefined" &&
-      typeof req.session.token != "undefined"
-    )
-      req.session.token = null;
-    res.send(true);
+  formLogin: async (req, res, next) => {
+    if (typeof req.session.token != "undefined" && req.session.token)
+      res.redirect("/");
+
+    res.render("user/login.ejs", {userName: null});
   },
 };
 

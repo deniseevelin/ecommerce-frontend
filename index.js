@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const cookieParse = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const expressLayouts = require("express-ejs-layouts");
+const multer = require("multer");
+const upload = multer();
 
 const app = express();
 
@@ -18,11 +20,13 @@ app.set("layout", "layouts/default");
 app.use(cors());
 app.use(express.json());
 app.use(cookieParse());
+app.use(upload.array());
 app.use(cookieSession({
   name: "denise-session",
   keys: ["12345678"],
   maxAge: 24*60*60*1000
 }));
+
 consign().include("routes").into(app);
 
 app.listen(8000, () => {
