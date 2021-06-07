@@ -8,7 +8,7 @@ module.exports = async (method, endpoint, token = null, data = {}, config = {}) 
     }
   }
   const instance = await axios.create({
-    baseURL: "http://localhost:3030",
+    baseURL: "https://shineyou.shop",
     headers,
   });
 
