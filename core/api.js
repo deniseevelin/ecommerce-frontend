@@ -8,7 +8,7 @@ module.exports = async (method, endpoint, token = null, data = {}, config = {}) 
     }
   }
   const instance = await axios.create({
-    baseURL: "https://shineyou.shop",
+    baseURL: "https://shineyou.herokuapp.com",
     headers,
   });
 
