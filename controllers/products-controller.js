@@ -4,7 +4,7 @@ const productsController = {
   list: async (req, res, next) => {
     try {
       let products = await repository.list();
-      console.log(products);
+      return res.status(400).send({ error: products });
       res.render("products/allproducts.ejs", {products: products.data });
     } catch (err) {
       return res.status(400).send({ error: "Error finding products!" });
