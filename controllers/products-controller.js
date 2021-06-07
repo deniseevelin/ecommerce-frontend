@@ -3,7 +3,8 @@ const repository = require("../repositories/products");
 const productsController = {
   list: async (req, res, next) => {
     try {
-      let products = await repository.getAllProducts(req, res);
+      let products = await repository.list(req, res);
+
       res.render("products/allproducts.ejs", {products: products.data });
     } catch (err) {
       return res.status(400).send({ error: "Error finding products!" });
