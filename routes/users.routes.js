@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.get("/users/login", controller.formLogin);
   app.post("/users/login", controller.login);
 
-  app.put("/users/:id", controller.update);
+  app.patch("/users/:id", controller.update);
 
   app.get("/profile/:id", controller.user);
 
