@@ -1,0 +1,158 @@
+<% if(user != null){%>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="mb-3 text-dark">Dados pessoais</h4>
+                <form class="needs-validation" novalidate="" id="form-update-data">
+                  <div class="row g-4">
+                    <div class="col-12">
+                      <label for="firstName" class="form-label">Nome completo</label>
+                      <input type="text" class="form-control" id="update-name" name="update-name" placeholder="" value="<%=user.name%>" required="">
+                      <div class="invalid-feedback">
+                        O nome completo é obrigatório.
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <label for="document" class="form-label">CPF<span></span></label>
+                      <input type="document" class="form-control" id="update-document" name="update-document" placeholder="000.000.000-00" value="<%=user.document%>">
+                      <div class="invalid-feedback">
+                          Insira um cpf válido.
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <label for="email" class="form-label">Email <span></span></span></label>
+                      <input type="email" class="form-control" id="update-email" name="update-email" placeholder="exemplo@exemplo.com" value="<%=user.email%>">
+                      <div class="invalid-feedback">
+                          Insira um e-mail válido.
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="document" class="form-label">Data de nascimento<span></span></label>
+                        <input type="text" class="form-control" id="update-birthdate" name="update-birthdate" placeholder="00/00/0000" value="<%=user.birthDate%>">
+                        <div class="invalid-feedback">
+                            Insira uma data de nascimento válida.
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <label for="email" class="form-label">Telefone<span></span></span></label>
+                        <input type="tel" class="form-control" id="update-phone" name="update-phone" placeholder="(00) 0 0000-0000" value="<%=user.phone%>">
+                        <div class="invalid-feedback">
+                            Insira um telefone válido.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="d-grid gap-2 col-6 mx-auto margins">
+                    <button type="button" class="btn btn-dark btn-lg bg-dark text bt-update" id="bt-update" value="<%=user._id%>">Atualizar dados pessoais</button>
+                  </div>
+                  </form>
+              </div>
+        <div class="row">
+            <div class="col-md-12 margins">
+                <h4 class="mb-3 text-dark mb-10 margins">Dados de entrega</h4>
+                  <form class="needs-validation" novalidate="" id="form-update-address">
+                    <div class="row g-3">
+                        <div class="col-2">
+                            <label for="zip" class="form-label">CEP</label>
+                            <input type="text" class="form-control" id="update-postcode" name="update-postcode" placeholder="00000-000" required="" value="<%=user.address.postCode%>">
+                            <div class="invalid-feedback">
+                              CEP é obrigatório.
+                            </div>
+                          </div>
+                      <div class="col-8">
+                        <label for="address" class="form-label">Rua</label>
+                        <input type="text" class="form-control" id="update-street" name="update-street" placeholder="Rua" required="" value="<%=user.address.street%>">
+                        <div class="invalid-feedback">
+                            Por favor inserir seu endereço de entrega.
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <label for="address" class="form-label">Número</label>
+                        <input type="text" class="form-control" id="update-number" name="update-number" placeholder="Número" required="" value="<%=user.address.number%>">
+                        <div class="invalid-feedback">
+                            Por favor inserir o número.
+                        </div>
+                      </div>            
+                      <div class="col-7">
+                        <label for="address2" class="form-label">Complemento <span class="text-muted">(Opcional)</span></label>
+                        <input type="text" class="form-control" id="update-complement" name="update-complement" placeholder="Apartamento / Condomínio / Bloco" value="<%=user.address.complement%>">
+                      </div>
+                      <div class="col-5">
+                        <label for="address2" class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="update-neighborhood" name="update-neighborhood" placeholder="" value="<%=user.address.neighborhood%>">
+                      </div>
+
+                      <div class="col-4">
+                        <label for="address2" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="update-city" name="update-city" placeholder="" value="<%=user.address.city%>">
+                      </div>          
+                      <div class="col-4">
+                        <label for="state" class="form-label">Estado</label>
+                        <input type="text" class="form-control" id="update-state" name="update-state" placeholder="" value="<%=user.address.state%>">
+                        <div class="invalid-feedback">
+                          Por favor insira um estado válido.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto margins">
+                      <button type="button" class="btn btn-dark btn-lg bg-dark text bt-updateaddress" id="bt-updateaddress" value="<%=user._id%>">Atualizar dados de entrega</button>
+                    </div>
+                    </form>
+              </div>
+              <div class="row">
+                <div class="col-md-12 margins">
+                    <h4 class="mb-3 text-dark mb-10 margins">Dados de pagamento</h4>
+                    <form id="form-hash">
+                    <div class="row gy-3">
+                      <div class="col-md-6">
+                        <label for="cc-name" class="form-label">Nome do cartão de crédito</label>
+                        <input type="text" class="form-control" id="name-creditcard" name="name-creditcard" placeholder="" required="">
+                        <small class="text-muted">Nome conforme exibido no cartão</small>
+                        <div class="invalid-feedback">
+                          Nome do cartão de crédito é obrigatório.
+                        </div>
+                      </div>
+          
+                      <div class="col-md-6">
+                        <label for="cc-number" class="form-label">Número do cartão de crédito</label>
+                        <input type="text" class="form-control" id="number-creditcard" name="number-creditcard" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            Número do cartão de crédito é obrigatório.
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="cc-expiration" class="form-label">Mês de vencimento</label>
+                        <input type="text" class="form-control" id="monthexpiration-creditcard" name="monthexpiration-creditcard" placeholder="00" required="">
+                        <div class="invalid-feedback">
+                          Mês de vencimento do cartão é obrigatório.
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <label for="cc-expiration" class="form-label">Ano de vencimento</label>
+                        <input type="text" class="form-control" id="yearexpiration-creditcard" name="yearexpiration-creditcard" placeholder="0000" required="">
+                        <div class="invalid-feedback">
+                          Ano de vencimento do cartão é obrigatório.
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="cc-cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" id="cvv-creditcard" name="cvv-creditcard" placeholder="000" required="">
+                        <div class="invalid-feedback">
+                          Código de segurança do cartão é obrigatório.
+                        </div>
+                      </div>
+                    </div>        
+                </div>
+              </div>
+              <div div class="d-grid gap-2 col-6 mx-auto margins">
+                <button type="button" class="btn btn-dark btn-lg bg-dark text" id="bt-datacc">Salvar dados de pagamento</button>
+              </div>
+            </form>
+          </div>
+          </div>
+          </div>
+    </div>
+<%}%>
+
+<script src="/js/hash.js"></script>
+<script src="/js/profile.shineyou.js"></script>
+<script type="text/javascript" src="https://sandbox.boletobancario.com/boletofacil/wro/direct-checkout.min.js"></script>

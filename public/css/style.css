@@ -69,3 +69,7 @@ margin: 0 auto;
 .off {
     display: none;
 }
+.margins{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

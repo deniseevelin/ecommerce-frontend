@@ -7,7 +7,5 @@ module.exports = (app) => {
 
   app.get("/contact", controller.contacts);
 
-  app.get("/cart", controller.cart);
-
   app.get("/logout", controller.logout);
 };

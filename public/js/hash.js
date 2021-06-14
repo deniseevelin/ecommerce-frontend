@@ -1,23 +1,39 @@
-function getHash() {
-
-var checkout = new DirectCheckout('BE04096DF8164FD548C67811B32626E89B2DF5087BEDEE8383199C56B6BA02A5', false);
-  /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */            
-
+const hash = {
+  init: () => {
+    document
+      .getElementById("bt-datacc")
+      .addEventListener("click", hash.getHash);
+  },
+  getHash: async () => {
+    var checkout = new DirectCheckout(
+      "BE04096DF8164FD548C67811B32626E89B2DF5087BEDEE8383199C56B6BA02A5",
+      false
+    );
     var cardData = {
-        cardNumber: '5209245140924852',
-        holderName: 'MARIA SILVA',
-        securityCode: '332',
-        expirationMonth: '08',
-        expirationYear: '2022'
-      };
+      cardNumber: document.getElementById("number-creditcard").value,
+      holderName: document.getElementById("name-creditcard").value,
+      securityCode: document.getElementById("cvv-creditcard").value,
+      expirationMonth: document.getElementById("monthexpiration-creditcard")
+        .value,
+      expirationYear: document.getElementById("yearexpiration-creditcard")
+        .value,
+    };
 
-  checkout.getCardHash(cardData, function(cardHash) {
-      console.log(cardHash);
-      /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
-  }, function(error) {
-      console.log(error)
-      /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
-  });
-}
+    const getGenerateHash = (cardData) =>
+      new Promise((resolve, reject) => {
+        checkout.getCardHash(
+          cardData,
+          function (cardHash) {
+            resolve(cardHash);
+          },
+          function (error) {
+            reject(error);
+          }
+        );
+      });
+      console.log(await getGenerateHash(cardData))
+      return await getGenerateHash(cardData);
+  }
+};
 
-window.addEventListener('load', getHash);
+window.addEventListener("DOMContentLoaded", hash.init);

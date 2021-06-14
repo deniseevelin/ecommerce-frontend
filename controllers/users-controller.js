@@ -5,6 +5,49 @@ const usersController = {
     const users = await repository.list();
     return res.send(users.data);
   },
+  user: async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      let user = await repository.user(req);
+      res.render("user/profile.ejs", {
+        id: user.data._id,
+        userName: user.data.name,
+        user: user.data,
+        layout: "layouts/users-default.ejs",
+      });
+    } catch (err) {
+      return res.status(400).send({ error: "Error finding user!" });
+    }
+  },
+  update: async (req, res, next) => {
+    const data = req.body;
+    
+    req.body = {
+      name: data["update-name"],
+      document: data["update-document"],
+      email: data["update-email"],
+      birthDate: data["update-birthdate"],
+      phone: data["update-phone"],
+      address: {
+        postcode: data["update-postcode"],
+        street: data["update-street"],
+        number: data["update-number"],
+        complement: data["update-complement"],
+        neighborhood: data["update-neighborhood"],
+        city: data["update-city"],
+        state: data["update-state"],
+      },
+      password: data["register-password"],
+    };
+
+    try {
+      const update = await repository.update(req);
+      if (update.error) throw new Error(update.error);
+      res.status(200).json(update.data);
+    } catch (err) {
+      return res.status(400).send({ error: err.message });
+    }
+  },
   register: async (req, res, next) => {
     const data = req.body;
 
@@ -36,9 +79,9 @@ const usersController = {
       if (login.error) throw new Error(login.error);
       req.session.token = login.data.token;
       req.session.user = login.data.user.name;
+      req.session.id = login.data.user._id;
       res.status(200).json(login.data);
     } catch (err) {
-      console.log(err)
       return res.status(400).send({ error: err.message });
     }
   },
@@ -46,7 +89,10 @@ const usersController = {
     if (typeof req.session.token != "undefined" && req.session.token)
       res.redirect("/");
 
-    res.render("user/login.ejs", {userName: null});
+    res.render("user/login.ejs", {
+      id: req.session.id,
+      userName: req.session.user,
+    });
   },
 };
 

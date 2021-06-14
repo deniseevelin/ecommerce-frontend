@@ -1,19 +1,52 @@
 const repository = require("../repositories/products");
+const imageHelper = require("../helper/image");
 
 const productsController = {
   list: async (req, res, next) => {
     try {
       let products = await repository.list();
-      res.render("products/allproducts.ejs", {products: products.data });
+      if (typeof req.session.token == "undefined" || !req.session.token) {
+        res.render("products/allproducts.ejs", {
+          id: req.session.id,
+          userName: req.session.user || null,
+          products: products.data,
+          layout: "layouts/default.ejs",
+          imageHelper,
+        });
+      } else {
+        res.render("products/allproducts.ejs", {
+          id: req.session.id,
+          userName: req.session.user || null,
+          products: products.data,
+          layout: "layouts/users-default.ejs",
+          imageHelper,
+        });
+      }
     } catch (err) {
       return res.status(400).send({ error: "Error finding products!" });
     }
   },
-  byId: async (req, res, next) => {
+  show: async (req, res, next) => {
     const { id } = req.params;
     try {
-      let products = await repository.product(id);
-      res.render("products/product-details.ejs", { products: products.data });
+      let product = await repository.product(req);
+      if (typeof req.session.token == "undefined" || !req.session.token) {
+        res.render("products/product-details.ejs", {
+          id: req.session.id,
+          userName: req.session.user || null,
+          product: product.data,
+          layout: "layouts/default.ejs",
+          imageHelper,
+        });
+      } else {
+        res.render("products/product-details.ejs", {
+          id: req.session.id,
+          userName: req.session.user || null,
+          product: product.data,
+          layout: "layouts/users-default.ejs",
+          imageHelper,
+        });
+      }
     } catch (err) {
       return res.status(400).send({ error: "Error finding product!" });
     }

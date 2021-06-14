@@ -4,44 +4,56 @@
                   <strong>Seu carrinho</strong></p>
               </h2>
             <ul class= "list-group list-group-flush cart mb-3">
+                <% for(let product of products) { %>
             <li class=" list-goup-item py-3">
                 <div class="row g-3">
                     <div class="col-4 col-md-3 col-lg-2">
                         <a href="#">
-                            <img width = "100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvd0SsaMAzw34YKCCey2p29USBRroezkvraYNXGh7HigpgxwTDNskDghz-Is-_xPCAw4RdBPIW&usqp=CAc" class="img-thumbnail">
+                            <img width = "100px" src="<%=imageHelper.urlImage(product.image)%>" class="img-thumbnail">
                         </a>
                     </div>
                     <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left align-self-center">
-                        <h6><b><a href="#" class= "text-decoration-none text-dark"> Anel folha prata 925</a></b></h6>
+                        <h6><b><a href="#" class= "text-decoration-none text-dark"><%=product.name%></a></b></h6>
                         <h6>
                             <p class="fw-light"><small>
-                                Anel de prata maravilhoso pra vc ficar mais gata possível e blabla
+                                <%=product.description%>
                             </small></p>
                         </h6> 
                     </div>
                     <div class="col-6 offset-6 col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3
                         offset-lg-0 col-xl-2 align-self-center mt-3">
                         <div class="input-group">
-                            <button type="button" class="btn btn-outline-secondary btn-sm">
+                            <button type="button" class="btn btn-outline-secondary btn-sm bt-increment" id="bt-increment">
                                 <img class="bi" width="16" height="16" fill="currentColor" src="https://img.icons8.com/ios/64/000000/collapse-arrow--v1.png"/>
                             </button>
-                            <input type="text" class="form-control text-center border-secondary" value="1">
-                            <button type="button" class="btn btn-outline-secondary btn-sm">
+
+                            <input type="text" class="form-control text-center border-secondary quantity" id="quantity" value="1" min="1" max="5">
+
+                            <button type="button" class="btn btn-outline-secondary btn-sm bt-decrement" id="bt-decrement">
                                 <img class="bi" width="16" height="16" fill="currentColor" src="https://img.icons8.com/ios/64/000000/expand-arrow--v1.png">
                             </button>
-                            <button type="button" class="btn btn-outline-danger border-secondary btn-sm">
+
+                            <button type="button" class="btn btn-outline-danger border-secondary btn-sm bt-trash" id="bt-trash" opt-id="<%=product.id%>">
                                 <img class="bi" width="16" height="16" fill="currentColor" src="https://img.icons8.com/ios/60/000000/trash--v1.png">
                             </button>
                         </div>
                         <div class="text-right mt-2">
-                            <small class="text-secondary">Valor Item: R$ 139,90</small><br>
+                            <small class="text-secondary">Valor Item: R$
+                                <a  id="item-price" name="item-price" type="number" class="item-price text-decoration-none text-secondary">
+                                    <%=product.price%>
+                                </a>
+                            </small><br>
                         </div>
                     </div>
                 </div>             
             </li>
+            <% } %>
             <li class="list-group-item py-3">
                 <div class="card-body text-center">
-                    <h5 class="card-title"><small class="text-dark">Valor total R$139,90</small></h5>
+                    <h5 class="card-title"><small class="text-dark">Valor total R$
+                        <a  id="total-cart" type="number" class="total-cart text-decoration-none text-secondary">
+                        </a>    
+                    </small></h5>
                     <p class="card-btn"> 
                       <a href="/products" class="btn btn-secondary"> Continuar comprando
                         <img src="https://img.icons8.com/ios/30/000000/price-tag--v1.png"/>
@@ -54,4 +66,8 @@
                       </p>
             </li>
             </ul>
-         </div>         
+         </div>    
+  
+<script src="/js/count.js"></script>         
+<script src="/js/sum.js"></script>
+<script src="/js/product.shineyou.js"></script>

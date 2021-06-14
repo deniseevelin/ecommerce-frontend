@@ -1,4 +1,6 @@
 const axios = require("axios");
+process.env["DEBUG"] = "axios";
+const debug = require('axios-debug-log');
 
 module.exports = async (method, endpoint, token = null, data = {}, config = {}) => {
   let headers = {};

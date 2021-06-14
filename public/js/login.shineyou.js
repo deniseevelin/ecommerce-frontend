@@ -1,8 +1,11 @@
-
 const auth = {
   init: () => {
-    document.getElementById("bt-login").addEventListener("click", auth.loginValidate);
-    document.getElementById("bt-register").addEventListener("click", auth.registerValidate);
+    document
+      .getElementById("bt-login")
+      .addEventListener("click", auth.loginValidate);
+    document
+      .getElementById("bt-register")
+      .addEventListener("click", auth.registerValidate);
   },
 
   loginValidate: () => {
@@ -13,8 +16,7 @@ const auth = {
 
     const erro = document.getElementsByClassName("message-err");
 
-    for(let i = 0; i < erro.length; i++)
-      erro[i].style.display = "none"
+    for (let i = 0; i < erro.length; i++) erro[i].style.display = "none";
 
     if (!validate.email(email.value)) {
       validation = false;
@@ -24,21 +26,17 @@ const auth = {
       validation = false;
       password.nextElementSibling.style.display = "block";
     }
-    if(validation)
-      auth.login();
+    if (validation) auth.login();
   },
 
   login: async () => {
-    // main.load();
-
-    const log=await fetch('/users/login', {
+    const log = await fetch("/users/login", {
       method: "POST",
-      body: new FormData(document.getElementById("form-login"))
+      body: new FormData(document.getElementById("form-login")),
     });
 
-    console.log(log);
+    location.reload();
   },
-
   registerValidate: () => {
     const name = document.getElementById("register-name");
     const email = document.getElementById("register-email");
@@ -48,13 +46,12 @@ const auth = {
 
     const erro = document.getElementsByClassName("message-err");
 
-    for(let i = 0; i < erro.length; i++)
-      err[i].style.display = "none"
+    for (let i = 0; i < erro.length; i++) erro[i].style.display = "none";
 
-    if (name.value.length < 3){
+    if (name.value.length < 3) {
       validation = false;
       name.nextElementSibling.style.display = "block";
-    }  
+    }
     if (!validate.email(email.value)) {
       validation = false;
       email.nextElementSibling.style.display = "block";
@@ -63,19 +60,16 @@ const auth = {
       validation = false;
       password.nextElementSibling.style.display = "block";
     }
-    if(validation)
-      auth.register();
+    if (validation) auth.register();
   },
 
   register: async () => {
-    const log=await fetch('/users', {
+    const log = await fetch("/users", {
       method: "POST",
-      body: new FormData(document.getElementById("form-register"))
+      body: new FormData(document.getElementById("form-register")),
     });
-
-    console.log(log);
+    location.reload();
   },
-
 };
 
 document.addEventListener("DOMContentLoaded", auth.init);

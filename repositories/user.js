@@ -10,4 +10,10 @@ module.exports = {
   list: async (req) => {
     return await api("GET", "/users", req.session.token || null, req.body);
   },
+  user: async (req) => {
+    return await api("GET", `/users/${req.params.id}`, req.session.token || null, req.body);
+  },
+  update: async (req) => {
+    return await api("PUT", `/users/${req.params.id}`, req.session.token || null, req.body);
+  }
 };
