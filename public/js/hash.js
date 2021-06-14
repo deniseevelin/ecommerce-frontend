@@ -31,9 +31,19 @@ const hash = {
           }
         );
       });
-      console.log(await getGenerateHash(cardData))
-      return await getGenerateHash(cardData);
+
+      const generatedHash = {
+          "creditCardHash": await getGenerateHash(cardData)
+          }
+          console.log(generatedHash)
+
+      const tokenizationCredit = await fetch(`/credit-cards/tokenization`, {
+        method: "POST",
+        body: JSON.stringify(generatedHash),
+      });
+
+      console.log(tokenizationCredit)
   }
 };
 
-window.addEventListener("DOMContentLoaded", hash.init);
+document.addEventListener("DOMContentLoaded", hash.init);

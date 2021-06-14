@@ -40,20 +40,10 @@
                             Insira um telefone válido.
                         </div>
                     </div>
-                  </div>
-                  <div class="d-grid gap-2 col-6 mx-auto margins">
-                    <button type="button" class="btn btn-dark btn-lg bg-dark text bt-update" id="bt-update" value="<%=user._id%>">Atualizar dados pessoais</button>
-                  </div>
-                  </form>
-              </div>
-        <div class="row">
-            <div class="col-md-12 margins">
-                <h4 class="mb-3 text-dark mb-10 margins">Dados de entrega</h4>
-                  <form class="needs-validation" novalidate="" id="form-update-address">
-                    <div class="row g-3">
+                    <h4 class="mb-3 text-dark mb-10 margins">Dados de entrega</h4>
                         <div class="col-2">
                             <label for="zip" class="form-label">CEP</label>
-                            <input type="text" class="form-control" id="update-postcode" name="update-postcode" placeholder="00000-000" required="" value="<%=user.address.postCode%>">
+                            <input type="text" class="form-control" id="update-postcode" name="update-postcode" placeholder="00000-000" value="<%=user.address.postCode%>">
                             <div class="invalid-feedback">
                               CEP é obrigatório.
                             </div>
@@ -80,7 +70,6 @@
                         <label for="address2" class="form-label">Bairro</label>
                         <input type="text" class="form-control" id="update-neighborhood" name="update-neighborhood" placeholder="" value="<%=user.address.neighborhood%>">
                       </div>
-
                       <div class="col-4">
                         <label for="address2" class="form-label">Cidade</label>
                         <input type="text" class="form-control" id="update-city" name="update-city" placeholder="" value="<%=user.address.city%>">
@@ -94,9 +83,10 @@
                       </div>
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto margins">
-                      <button type="button" class="btn btn-dark btn-lg bg-dark text bt-updateaddress" id="bt-updateaddress" value="<%=user._id%>">Atualizar dados de entrega</button>
+                      <button type="button" class="btn btn-dark btn-lg bg-dark text bt-update" id="bt-update" value="<%=user._id%>">Atualizar dados</button>
                     </div>
-                    </form>
+                </form>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12 margins">

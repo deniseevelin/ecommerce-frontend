@@ -1,5 +1,6 @@
 <div class="row g-5 container-fluid">
-        <div class="col-md-5 col-lg-4 order-md-last">
+  <% for(let product of products) { %>
+  <div class="col-md-5 col-lg-4 order-md-last">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-secondary">Seu carrinho</span>
             <span class="badge bg-secondary rounded-pill">1</span>
@@ -7,7 +8,7 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-sm">
               <div>
-                <h6 class="my-0">Anel de folha Prata 925</h6>
+                <h6 class="my-0"><%=product.name%></h6>
                 <small class="text-muted">Anel de prata de folha 925</small>
               </div>
               <span class="text-muted">R$ 139,90</span>
@@ -32,26 +33,18 @@
             </div>
           </form>
         </div>
+        <% if(user != null){%>
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3 text-secondary">Dados para pagamento</h4>
           <form class="needs-validation" novalidate="">
             <div class="row g-3">
               <div class="col-sm-6">
-                <label for="firstName" class="form-label">Primeiro nome</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                <label for="firstName" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="<%=user.name%>" required="">
                 <div class="invalid-feedback">
-                  Primeiro nome é obrigatório.
+                 Nome é obrigatório.
                 </div>
               </div>
-  
-              <div class="col-sm-6">
-                <label for="lastName" class="form-label">Sobrenome</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  SObrenome é obrigatório.
-                </div>
-              </div>
-
               <div class="col-12">
                 <label for="document" class="form-label">CPF<span></span></label>
                 <input type="document" class="form-control" id="document" placeholder="xxx.xxx.xxx.xx">
@@ -205,3 +198,4 @@
           </form>
         </div>
  </div>
+ <%}%>

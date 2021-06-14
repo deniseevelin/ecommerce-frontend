@@ -14,7 +14,7 @@ const paymentController = {
           layout: "layouts/default.ejs",
         });
 
-      res.render("payments.ejs", {
+      res.render("financial/payments.ejs", {
         id: user.data._id,
         userName: user.data.name,
         user: user.data,

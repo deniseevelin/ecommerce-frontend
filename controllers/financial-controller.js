@@ -3,7 +3,7 @@ const api = require("../core/api");
 const financialControllers = {
   createCharge: async (req, res, next) => {
     try {
-      const createCharge = await api(req, "post", "/charges", req.body);
+      const createCharge = await api(req, "POST", "/charges", req.body);
       console.log(createCharge);
       return res.send(createCharge.data);
     } catch (err) {
@@ -13,7 +13,7 @@ const financialControllers = {
   cancelCharge: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const cancelCharge = await api("put", `/charges/${id}/cancelation`);
+      const cancelCharge = await api("PUT", `/charges/${id}/cancelation`);
       return res.send(cancelCharge.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
@@ -21,16 +21,16 @@ const financialControllers = {
   },
   tokenCreditCard: async (req, res, next) => {
     try {
-      const hash = req.body;
-      const token = await api("post", "/credit-cards/tokenization", hash);
-      return res.send(token.data);
+      const token = await api("POST", "/credit-cards/tokenization", null, req.body);
+      console.log(token)
+      res.send(token.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
     }
   },
   paymentCharge: async (req, res, next) => {
     try {
-      const payment = await api("post", "/payments", req.body);
+      const payment = await api("POST", "/payments", req.body);
       res.send(payment.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
@@ -39,7 +39,7 @@ const financialControllers = {
   refundsPayment: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const refund = await api("post", `/payments/${id}/refunds`, req.body);
+      const refund = await api("POST", `/payments/${id}/refunds`, req.body);
       res.send(refund.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
@@ -48,7 +48,7 @@ const financialControllers = {
   capturePayment: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const capture = await api("post", `/payments/${id}/capture`, req.body);
+      const capture = await api("POST", `/payments/${id}/capture`, req.body);
       res.send(capture.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
