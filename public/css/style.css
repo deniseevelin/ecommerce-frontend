@@ -73,3 +73,9 @@ margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 30px;
 }
+.sizeimage {
+    width: 50px
+}
+.margeleft { 
+    margin-left:-110px;
+}

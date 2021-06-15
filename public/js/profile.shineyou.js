@@ -11,6 +11,7 @@ const update = {
       method: "PATCH",
       body: new FormData(document.getElementById("form-update-data")),
     });
+    location.reload();
   },
 };
 

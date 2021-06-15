@@ -32,18 +32,31 @@ const hash = {
         );
       });
 
-      const generatedHash = {
-          "creditCardHash": await getGenerateHash(cardData)
-          }
-          console.log(generatedHash)
-
-      const tokenizationCredit = await fetch(`/credit-cards/tokenization`, {
-        method: "POST",
-        body: JSON.stringify(generatedHash),
-      });
-
-      console.log(tokenizationCredit)
-  }
+    const generatedHash = {
+      creditCardHash: await getGenerateHash(cardData),
+    };
+    const id = document.getElementById("bt-update").value;
+    const saveHash = await fetch(`/users/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      method: "PATCH",
+      body: JSON.stringify({
+        creditCardHash: generatedHash,
+      }),
+    });
+    alert("Salvo com sucesso!")
+    location.reload();
+    // const tokenizationCredit = await fetch(`/credit-cards/tokenization`, {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json"
+    //   },
+    //   method: "POST",
+    //   body: JSON.stringify(generatedHash),
+    // });
+  },
 };
 
 document.addEventListener("DOMContentLoaded", hash.init);

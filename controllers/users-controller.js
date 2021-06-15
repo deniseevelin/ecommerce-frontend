@@ -9,6 +9,7 @@ const usersController = {
     const { id } = req.params;
     try {
       let user = await repository.user(req);
+      console.log(user.data)
       res.render("user/profile.ejs", {
         id: user.data._id,
         userName: user.data.name,
@@ -29,7 +30,7 @@ const usersController = {
       birthDate: data["update-birthdate"],
       phone: data["update-phone"],
       address: {
-        postcode: data["update-postcode"],
+        postCode: data["update-postcode"],
         street: data["update-street"],
         number: data["update-number"],
         complement: data["update-complement"],
@@ -37,7 +38,7 @@ const usersController = {
         city: data["update-city"],
         state: data["update-state"],
       },
-      password: data["register-password"],
+      creditCardHash
     };
 
     try {

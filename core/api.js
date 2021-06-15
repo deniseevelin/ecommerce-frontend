@@ -10,7 +10,7 @@ module.exports = async (method, endpoint, token = null, data = {}, config = {}) 
     }
   }
   const instance = await axios.create({
-    baseURL: "https://shineyou.herokuapp.com",
+    baseURL: process.env.NODE_ENV == "PROD" ? "https://shineyou.herokuapp.com" : "http://localhost:3030",
     headers,
   });
 

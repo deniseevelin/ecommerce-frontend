@@ -3,8 +3,7 @@ const api = require("../core/api");
 const financialControllers = {
   createCharge: async (req, res, next) => {
     try {
-      const createCharge = await api(req, "POST", "/charges", req.body);
-      console.log(createCharge);
+      const createCharge = await api("POST", "/charges", null, req.body);
       return res.send(createCharge.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
@@ -21,8 +20,12 @@ const financialControllers = {
   },
   tokenCreditCard: async (req, res, next) => {
     try {
-      const token = await api("POST", "/credit-cards/tokenization", null, req.body);
-      console.log(token)
+      const token = await api(
+        "POST",
+        "/credit-cards/tokenization",
+        null,
+        req.body
+      );
       res.send(token.data);
     } catch (err) {
       return res.status(400).send({ error: err.message });
