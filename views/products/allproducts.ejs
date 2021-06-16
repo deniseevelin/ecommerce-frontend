@@ -1,24 +1,26 @@
-<% if(products.length > 0){%> <% for (let product of products){%>
-<div class="row gy-3 text-center container-fluid">
-  <div class="col-3 col-md-3">
-    <div class="p-4 border bg-light container-fluid">
-      <div class="card" style="width: 18rem">
-        <img src="<%=imageHelper.urlImage(product.image)%>" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title"><%=product.name%></h5>
-          <span class="card-subtitle mb-2 text-muted">R$ <%=product.price%></span>
-          <p class="card-text"></p>
-          <a href="/products/<%= product._id%>" class="btn btn-dark">Detalhes do produto</a>
-          <a href="javascript:void(0)" class="btn bt-addcart" opt-id="<%=product._id%>">
-            <img
-              src="https://img.icons8.com/ios/40/000000/add-shopping-cart--v1.png" class="xyz"
-            />
-          </a>
+<% if(products.length > 0){%> 
+<div class="container">
+  <div class="row text-center">
+    <% for (let product of products){%>
+    <div class="col-4">
+        <div class="card text-center" style="width: 18rem">
+          <img src="<%=imageHelper.urlImage(product.image)%>" class="card-img-center imgproduct" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title"><%=product.name%></h5>
+            <span class="card-subtitle mb-2 text-muted">R$ <%=product.price%></span>
+            <p class="card-text"></p>
+            <a href="/products/<%= product._id%>" class="btn btn-dark">Detalhes do produto</a>
+            <a href="javascript:void(0)" class="btn bt-addcart" opt-id="<%=product._id%>">
+              <img
+                src="https://img.icons8.com/ios/40/000000/add-shopping-cart--v1.png" class="xyz"
+              />
+            </a>
+          </div>
         </div>
-      </div>
     </div>
+    <%}%>
   </div>
 </div>
-<%}%> <%}%>
+<%}%>
 
 <script src="/js/product.shineyou.js"></script>
