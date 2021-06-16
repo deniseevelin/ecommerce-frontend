@@ -13,6 +13,9 @@ module.exports = {
   user: async (req) => {
     return await api("GET", `/users/${req.params.id}`, req.session.token || null, req.body);
   },
+  card: async (req) => {
+    return await api("GET", `/users/${req.params.id}/cards`, req.session.token || null, req.body);
+  },
   update: async (req) => {
     return await api("PATCH", `/users/${req.params.id}`, req.session.token || null, req.body);
   }

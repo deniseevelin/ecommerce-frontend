@@ -33,12 +33,20 @@ const charge = {
         },
       },
     };
-    console.log(body);
-    const billet = await fetch("/charges", {
+    const generateCharge = await fetch("/charges", {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
       method: "POST",
       body: JSON.stringify(body),
     });
-    console.log(billet);
+    if (methodPayment == "BOLETO") {
+      window.location.href = "http://localhost:8000/billet"
+    }
+    if (methodPayment == "CREDIT_CARD") {
+      window.location.href = "http://localhost:8000/card"
+    }
   },
 };
 

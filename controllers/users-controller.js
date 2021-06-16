@@ -9,7 +9,6 @@ const usersController = {
     const { id } = req.params;
     try {
       let user = await repository.user(req);
-      console.log(user.data)
       res.render("user/profile.ejs", {
         id: user.data._id,
         userName: user.data.name,
@@ -20,9 +19,24 @@ const usersController = {
       return res.status(400).send({ error: "Error finding user!" });
     }
   },
+  charges: async (req, res, next) => {
+    req.params.id = req.session.id;
+    try {
+      let user = await repository.user(req);
+      const charges = user.data.charge;
+      res.render("user/orders.ejs", {
+        charges: charges,
+        id: user.data._id,
+        userName: user.data.name,
+        layout: "layouts/users-default.ejs",
+      });
+    } catch (err) {
+      return res.status(400).send({ error: err.message });
+    }
+  },
   update: async (req, res, next) => {
     const data = req.body;
-    
+
     req.body = {
       name: data["update-name"],
       document: data["update-document"],
@@ -38,9 +52,8 @@ const usersController = {
         city: data["update-city"],
         state: data["update-state"],
       },
-      creditCardHash
+      creditCardHash: req.body.creditCardHash,
     };
-
     try {
       const update = await repository.update(req);
       if (update.error) throw new Error(update.error);

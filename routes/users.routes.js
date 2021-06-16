@@ -8,6 +8,8 @@ module.exports = (app) => {
 
   app.get("/profile/:id", controller.user);
 
-  app.post("/users", controller.register);  
+  app.get("/orders", controller.charges);
+
+  app.post("/users", controller.register);
   app.get("/users", controller.list);
 };

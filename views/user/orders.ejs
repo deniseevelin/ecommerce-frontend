@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Código</th>
+        <th scope="col">Vencimento</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for(let charge of charges) { %>
+      <tr>
+        <th scope="row"><%=charge.id%></th>
+        <td><%=charge.code%></td>
+        <td><%=charge.dueDate%></td>
+        <td>R$ <%=charge.amount%></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  

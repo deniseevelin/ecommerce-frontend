@@ -79,3 +79,6 @@ margin: 0 auto;
 .margeleft { 
     margin-left:-110px;
 }
+.margtop {
+    margin-top: 50px;
+}

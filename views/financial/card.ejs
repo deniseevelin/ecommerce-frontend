@@ -1,0 +1,44 @@
+<% if(user != null){%>
+    <% if(idCharge != null){%>
+        <% if(card != null){%>
+    <div class="container-fluid margtop">
+    <class class="card container" style="width: 30rem;">
+        <div class="container text-center">
+            <img src="https://img.icons8.com/ios-filled/120/000000/bank-card-back-side.png"/>
+        </div>
+        <div class="card-body text-center">
+          <h6 class="card-title text-danger">ATENÇÃO!</h6>
+          <p class="card-text">Confira os dados do seu cartão antes de confirmar o pagamento</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"> <form id="form-hash">
+            <div class="row gy-3">  
+              <div class="col-md-12">
+                <label for="cc-number" class="form-label"><b>Útimos 4 dígitos</b></label>
+                <input type="text" class="form-control text-secondary" id="number-creditcard" name="number-creditcard" placeholder="" value="... XXXX <%=card.data.number%>" required="" readonly>
+                <div class="invalid-feedback">
+                    Número do cartão de crédito é obrigatório.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="cc-expiration" class="form-label"><b>Mês de vencimento</b></label>
+                <input type="text" class="form-control text-secondary" id="monthexpiration-creditcard" name="monthexpiration-creditcard" value="<%=card.data.expirationMonth%>"placeholder="00" required="" readonly>
+              </div>
+              <div class="col-md-6">
+                <label for="cc-expiration" class="form-label"><b>Ano de vencimento</b></label>
+                <input type="text" class="form-control text-secondary" id="yearexpiration-creditcard" name="yearexpiration-creditcard" value="<%=card.data.expirationYear%>" placeholder="0000" required="" readonly>
+              </div>
+            </div>        
+        </div>
+      </div>
+      <div class="d-grid gap-2 col-4 mx-auto">
+        <button class="btn btn-success btn-md margins bt-checkout" id="bt-checkout" type="button"><b>Confirmar pagamento</b></button>
+    </div>
+    </form>
+    </div>
+        </ul>
+    <%}%>
+    <%}%>
+    <%}%>
+    
+<script src="/js/checkout.shineyou.js"></script>

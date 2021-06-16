@@ -35,27 +35,16 @@ const hash = {
     const generatedHash = {
       creditCardHash: await getGenerateHash(cardData),
     };
-    const id = document.getElementById("bt-update").value;
-    const saveHash = await fetch(`/users/${id}`, {
+   
+
+    const tokenizationCredit = await fetch(`/credit-cards/tokenization`, {
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        "Accept": "application/json"
       },
-      method: "PATCH",
-      body: JSON.stringify({
-        creditCardHash: generatedHash,
-      }),
+      method: "POST",
+      body: JSON.stringify(generatedHash),
     });
-    alert("Salvo com sucesso!")
-    location.reload();
-    // const tokenizationCredit = await fetch(`/credit-cards/tokenization`, {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Accept": "application/json"
-    //   },
-    //   method: "POST",
-    //   body: JSON.stringify(generatedHash),
-    // });
   },
 };
 

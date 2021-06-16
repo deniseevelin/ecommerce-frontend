@@ -1,0 +1,12 @@
+<% if(user != null){%>
+<div class="container-fluid text-center margtop">
+  <h1 class="text-secondary">Aqui está seu boleto, <%=user.name%>>!</h1>
+<div class="text-center">
+    <% if(link != null){%>
+    <a class="btn btn-light" href="<%=link%>" role="button">
+        <img src="https://img.icons8.com/color/200/000000/boleto-bankario.png"/>
+        <h4 class="text-secondary">Clique para imprimir</h4>
+    </a>
+    <%}%>
+</div>
+<%}%>
