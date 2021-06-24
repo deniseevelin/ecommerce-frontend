@@ -42,10 +42,10 @@ const charge = {
       body: JSON.stringify(body),
     });
     if (methodPayment == "BOLETO") {
-      window.location.href = "http://localhost:8000/billet"
+      window.location.href = "https://shineyou.shop/billet"
     }
     if (methodPayment == "CREDIT_CARD") {
-      window.location.href = "http://localhost:8000/card"
+      window.location.href = "https://shineyou.shop/card"
     }
   },
 };
